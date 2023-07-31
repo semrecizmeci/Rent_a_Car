@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+@*    <form method="post" enctype="multipart/form-data" asp-action="UploadPhoto" asp-controller="UploadImages">
+        <input type="file" name="photo" accept=".jpg" /> 
+        <button type="submit">Fotoğrafı Yükle</button>
+    </form>
+
+*@
+    <form asp-action="UploadPhoto" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="photo">Select Photo:</label>
+            <input type="file" id="photo" name="Photo" accept="image/*" class="form-control-file" />
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+    @ViewBag.message
+</body>
+</html>

@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Car Rent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+
+
+    <!--header bitis-->
+    <!--ikinci kisim baslangic-->
+    @{
+        string viewBagİsim = @ViewBag.Isim;
+    }
+    <div class="site9">
+        <div class="container">
+            <div class="row3">
+                <div class="col1">
+
+                    <form class="trip-form" method="post" asp-action="_filterCars" asp-controller="_mainPage">
+                        <div class="block3">
+                            <div class="col1">
+                                <h3 class="begin">Begin your trip here</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form">
+                                <label>Where you from</label>
+                                <input type="text" name="c" placeholder="Your pickup address" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Where you go</label>
+                                <input type="text" name="d" placeholder="Your drop-off address" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Journey date</label>
+                                <input type="text" name="a" placeholder="Your pickup address" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Return date</label>
+                                <input type="text" name="b" placeholder="Your pickup address" class="form-control" required>
+                            </div>
+                            <input type="hidden" name="viewBagIsim" value="@ViewBag.Isim" />
+                        </div>
+                        <div class="row">
+                            <div class="col3">
+                                <input type="submit" value="Submit" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--ikinci kisim bitis-->
+        <br><br><br><br><br>
+        <!--kısım 3 baslangic-->
+
+
+        <div class="Ours">
+            <div class="containers">
+                <div class="row3">
+                    <div class="col3">
+                        <h1>Our services</h1>
+                    </div>
+                </div>
+                <div class="row5">
+                    <div class="col4">
+                        <div class="service-1">
+
+                            <div class="service-1">
+                                <h3>Repair</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col4">
+                        <div class="service-1">
+                            <span class="service-1"></span>
+                            <div class="service-3">
+                                <h3>Car Accessories</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col4">
+                        <div class="service-1">
+                            <span class="service-">
+                            </span>
+                            <div class="service-2">
+                                <h3>Own a Car</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--kısım 3 bitis-->
+        <!--dördüncü kisim baslangic-->
+        <div class="site-section">
+            <div class="justify">
+                <div class="col7">
+                    <h2>How it works</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+                </div>
+            </div>
+            <!--dördüncü kisim bitis-->
+            <hr>
+            <!--besinci kisim baslangic-->
+
+            <div class="site-section">
+                <div class="container">
+                    <div class="justify">
+                        <div class="col7">
+                            <h2>Customer Testimony</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+                        </div>
+                    </div>
+                    <!--besinci kisim bitis-->
+
+                    <hr>
+
+                    <div class="flex">
+                        <img class="mike" src="/images/person_1.jpg" alt="Image">
+                        <span>Mike Fisher</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col4">
+                <div class="testimo">
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
+                    <hr>
+                    <div class="flex">
+                        <img class="mike" src="/images/person_2.jpg" alt="Image">
+                        <span>Jean Stanley</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col4">
+                <div class="testimo">
+
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
+                    <hr>
+                    <div class="flex">
+                        <img class="mike" src="/images/person_3.jpg" alt="Image">
+                        <span>Katie Rose</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <hr>
+   @* <div class="justify">
+        <div class="col7">
+            <h2>Our Blog</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+        </div>
+    </div>*@
+</body>
+</html>

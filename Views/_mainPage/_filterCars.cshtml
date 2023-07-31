@@ -1,0 +1,61 @@
+﻿@model Rent_a_car_main_page.Models.CitiesSelectedcarUsablecar
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Car Rent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link href="../../css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    @{
+        string viewBagIsim = @ViewBag.Isim;
+    }
+
+    @foreach (var item in Model.SelectedCarInfo)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="item">
+
+                @* nav bar bu sayfaya gelindiğinde bozuluyor ve kullanıcının login olduğu gözükmüyor !*@
+                        <a href="#"><img src="@item.İmages" alt="Image" class="img-fluid"></a>
+                        <div class="item-1-contents">
+                            <div class="text-center">
+                                <h3><a href="#"><strong> @item.Car_Model </strong></a></h3>
+                                <div class="rent-price"><span> $@item.Price </span></div>
+                            </div>
+                            <ul class="specs">
+                                <li>
+                                    <span>Araç Kapı Sayısı :</span>
+                                    <span class="spec">@item.Doors_Number </span>
+                                </li>
+                                <li>
+                                    <span>Araç Koltuk Sayısı :</span>
+                                    <span class="spec">@item.Seats</span>
+                                </li>
+                                <li>
+                                    <span>Vites :</span>
+                                    <span class="spec">@item.Transmission</span>
+                                </li>
+                                <li>
+                                    <span>Nerede Kullanılabilir :</span>
+                                    <span class="spec">Bu araç @item.Areas il sınırları içerisinde kullanılabilir.</span>
+                                </li>
+                            </ul>
+                            <div class="flex">
+                                <a href="contact.html" class="btn btn-primary">Rent Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

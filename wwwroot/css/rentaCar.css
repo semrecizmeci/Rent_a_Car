@@ -1,0 +1,14 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    position: relative;
+}
+
+.card {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}

@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+@model VMLogin;
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .login-container {
+        max-width: 400px;
+        padding: 20px;
+        border: 10px solid #ccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+        <form asp-controller="Access" asp-action="Login" method="post">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+            asp-for="Email" />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="passWord" 
+            asp-for="PassWord"
+          />
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" asp-for="KeppLoggedIn" />
+          <label class="form-check-label" for="exampleCheck1">Keep me logged In.</label>
+        </div>
+
+            @if (ViewData["ValidateMessage"] != null)
+            {
+                <br />
+                <br />
+                <label><strong>@ViewData["ValidateMessage"]</strong></label>
+            }
+            <strong> @ViewBag.message</strong><br />
+            <script src="https://www.google.com/recaptcha/api.js"></script>     
+                <div class="g-recaptcha" data-sitekey="6LcXc70mAAAAAKZC0dS-sFwGRfigwWs-Co3IXB85"></div><br />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            <br /><br />
+            <a style="background-color:yellow;color:black" class="btn btn-primary" asp-action="_mainPage" asp-controller="_mainPage" role="button">Anasayfaya dön</a>
+      </form>
+    </div>
+   
+  </body>
+</html>
+

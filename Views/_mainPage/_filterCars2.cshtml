@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Car Rent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link href="../../css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    @foreach (var item in Model.Item2)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="item">
+                        <a href="#"><img src="/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        <div class="item-1-contents">
+                            <div class="text-center">
+                                <h3><a href="#">Range Rover S64 Coupe</a></h3>
+                                <div class="rent-price"><span>$@item.Price</span>day</div>
+                            </div>
+                            <ul class="specs">
+                                <li>
+                                    <span>Doors</span>
+                                    <span class="spec">@item.Doors_Number</span>
+                                </li>
+                                <li>
+                                    <span>Seats</span>
+                                    <span class="spec">@item.Seats</span>
+                                </li>
+                                <li>
+                                    <span>Transmission</span>
+                                    <span class="spec">@item.Transmission</span>
+                                </li>
+                            </ul>
+                            <div class="flex">
+                                <a href="contact.html" class="btn btn-primary">Rent Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

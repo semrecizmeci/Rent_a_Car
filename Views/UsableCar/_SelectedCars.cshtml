@@ -1,0 +1,189 @@
+﻿@*@model System.Tuple<List<Rent_a_car_main_page.Models.Selected_Car_Info>, List<Rent_a_car_main_page.Models.Cities>, List<Rent_a_car_main_page.Models.UsableCars>>*@
+@model Tuple<List<Rent_a_car_main_page.Models.Selected_Car_Info>, List<Rent_a_car_main_page.Models.Cities>, List<Rent_a_car_main_page.Models.UsableCars>>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .car-container {
+            width: 200px;
+            height: 400px;
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .car-image {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .car-fiyat {
+            font-weight: bold;
+        }
+
+        .car-name {
+            font-weight: bold;
+        }
+
+        .car-features {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .feature {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .rent-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .rent-button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <div id="carCatalog"></div>
+
+    <script>
+        var carModel = [];
+        var carImages = [];
+        var carPrice = [];
+        var carAreas = [];
+
+        @foreach (var item in Model.Item1)
+        {
+            @:carModel.push('@item.Car_Model');
+            @:carImages.push('@item.İmages');
+            @:carPrice.push('@item.Price');
+            @:carAreas.push('@item.Areas');
+        }
+
+            var toplamJs = @ViewBag.toplam;
+
+
+
+        // Araç sınıfı
+        //class Arac {
+        //    constructor(marka, model, resim, fiyat, ozellikler, cevaplar) {               
+        //    this.marka = carModel[];
+        //    this.model = carModel[];
+        //    this.resim = carImages;
+        //    this.fiyat = carPrice;
+        //    this.ozellikler = carAreas;
+        //    this.cevaplar = cevaplar;
+           
+        //    }
+        //}
+        class Arac {
+            constructor(marka, model, resim, fiyat, ozellikler, cevaplar) {
+                this.marka = marka;
+                this.model = model;
+                this.resim = resim;
+                this.fiyat = fiyat;
+                this.ozellikler = ozellikler;
+                this.cevaplar = cevaplar;
+            }
+        }
+
+        // Araç kiralama kataloğu
+        class AracKiralamaKatalogu {
+            constructor() {
+                this.araclar = [];
+            }
+
+            aracEkle(arac) {
+                this.araclar.push(arac);
+            }
+
+            araclarListele() {
+                const carCatalogDiv = document.getElementById('carCatalog');
+                this.araclar.forEach((arac) => {
+                    const carContainer = document.createElement('div');
+                    carContainer.classList.add('car-container');
+
+                    const carImage = document.createElement('img');
+                    carImage.classList.add('car-image');
+                    carImage.src = arac.resim;
+                    carContainer.appendChild(carImage);
+
+                    const carName = document.createElement('div');
+                    carName.classList.add('car-name');
+                    carName.textContent = arac.marka + ' ' + arac.model;
+                    carContainer.appendChild(carName);
+
+                    const carFiyat = document.createElement('div');
+                    carFiyat.classList.add('car-fiyat');
+                    carFiyat.textContent = arac.fiyat;
+                    carContainer.appendChild(carFiyat);
+
+
+                    const carFeatures = document.createElement('div');
+                    carFeatures.classList.add('car-features');
+                    arac.ozellikler.forEach((ozellik, index) => {
+                        const feature = document.createElement('div');
+                        feature.classList.add('feature');
+
+                        const ozellikLabel = document.createElement('span');
+                        ozellikLabel.textContent = ozellik;
+                        feature.appendChild(ozellikLabel);
+
+                        const cevap = document.createElement('span');
+                        cevap.textContent = arac.cevaplar[index];
+                        feature.appendChild(cevap);
+
+                        carFeatures.appendChild(feature);
+                    });
+                    carContainer.appendChild(carFeatures);
+
+                    const rentButton = document.createElement('button');
+                    rentButton.classList.add('rent-button');
+                    rentButton.textContent = 'Kirala';
+                    carContainer.appendChild(rentButton);
+
+                    carCatalogDiv.appendChild(carContainer);
+                });
+            }
+        }
+
+        // Araç kiralama kataloğu örneği
+        const katalog = new AracKiralamaKatalogu();
+
+        // Araçları oluşturup kataloğa ekleme
+        for (let i = 0; i < carModel.length; i++) {
+            const arac = new Arac(
+                carModel[i],
+                carImages[i],
+                carPrice[i],
+                carAreas[i],
+                ["Doors", "Seats", "Transmission", "Minimum Age"],
+                ["4", "5", "Automatic", "21"]
+            );
+
+
+
+        katalog.aracEkle(arac1);
+
+        let toplam = toplamJs;
+        // Araçları listeleme
+        for (let i = 0; i < toplam; i++) {
+            katalog.araclarListele();
+        }
+    </script>
+</body>
+</html>

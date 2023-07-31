@@ -1,0 +1,131 @@
+﻿@*<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Rent_a_car_main_page</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Rent_a_car_main_page.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Rent_a_car_main_page</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="Services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="Cars">Cars</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Rent_a_car_main_page - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+*@
+
+@{
+    string ViewBagControl = @ViewBag.Control;
+    string ViewBagMessage = @ViewBag.message;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Car Rent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!--header baslangic-->
+    <div class="rent">
+        <div class="eyes">
+            <h1>CarRent</h1>
+            <ul class="raw">
+                <h5>
+                <li asp-area="" asp-controller="_mainPage" asp-action="_mainPage">Home</li></h5>
+                <h5>
+                <li>Services</li></h5>
+                <h5>
+                <li>About</li></h5>
+                <h5>
+                <li><a type="hidden" name="viewBagIsim" value="@ViewBag.Isim" asp-area="" asp-controller="_cars" asp-action="_cars">Cars</a></li>
+                <h5>
+                <li>Blog</li> </h5>
+                <h5>
+                <li> <a href="#">Contact</a></li></h5>
+
+                    @if (@ViewBag.Isim!=null)
+                    {
+                    <h5>
+                        @*burada bir problem var. Kullanıcı filtreleme yapmadan hemen alttaki <li> ye tıklayınca hata alıyoruz
+                         ,o kısmı düzenlemek gerek.*@
+                    <li class="loginSignUp"><a asp-action="_filterCars" asp-controller="_mainPage">@ViewBagMessage @ViewBag.Isim</a></li>
+                    </h5>
+                    <h5>
+                    <li class="loginSignUp"><a asp-action="LogOut" asp-controller="Home">Log Out</a> </li> </h5>
+                    <h5>
+                    <li class="loginSignUp"><a href="#">:)</a> </li> </h5>
+                    }
+                    else
+                    {
+                    <h5>
+                    <li class="loginSignUp"><a asp-area="" asp-controller="Access" asp-action="Login">Log In</a></li>
+                    </h5>
+                    <h5>
+                    <li class="loginSignUp"><a asp-action="LogOut" asp-controller="Home">::::</a> </li> </h5>
+                 <h5>
+                    <li class="loginSignUp"><a href="#">Sign Up</a> </li> </h5>
+                    }
+
+            </ul>
+        </div>
+    </div>
+    
+
+
+    @RenderBody()
+
+    <div class="justify">
+        <div class="col7">
+            <h2>Our Blog</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+        </div>
+    </div>
+
+</body>
+</html>
